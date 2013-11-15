@@ -8,6 +8,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>Proveedor</servlet-name>
 		<servlet-class>co.com.agronome.proveedores.servlet.ProveedorServlet</servlet-class>
 	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>Base</servlet-name> -->
+<!-- 		<servlet-class>co.com.agronome.proveedores.servlet.ProveedorServlet</servlet-class> -->
+<!-- 	</servlet> -->
 	<servlet-mapping>
 		<servlet-name>Proveedor</servlet-name>
 		<url-pattern>/proveedor</url-pattern>

@@ -28,9 +28,9 @@ public class Proveedor {
 	 * @param rate
 	 */
 	public static void createOrUpdateProveedor(String usuario,  String pass, String nit, String nombre, String etiquetas, String telefono){
-		Entity proveedor = getSingleProveedor(usuario,pass);
+		Entity proveedor = getSingleProveedor(usuario);
 		if (proveedor == null) {
-			proveedor = new Entity("Proveedor", usuario+"/"+pass);
+			proveedor = new Entity("Proveedor", usuario);
 			proveedor.setProperty("usuario", usuario);
 			proveedor.setProperty("pass", pass);
 			proveedor.setProperty("nit", nit);
@@ -49,6 +49,33 @@ public class Proveedor {
 			}
 		}
 		Util.persistEntity(proveedor);
+	}
+	
+	/**
+	 * Crear un Proveedor
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 15/11/2013
+	 * @param usuario
+	 * @param pass
+	 * @param nit
+	 * @param nombre
+	 * @param etiquetas
+	 * @param telefono
+	 * @throws Exception 
+	 */
+	public static void createProveedor(String usuario,  String pass, String nit, String nombre, String etiquetas, String telefono) throws Exception{
+		Entity proveedor = getSingleProveedor(usuario);
+		if (proveedor == null) {
+			proveedor = new Entity("Proveedor", usuario);
+			proveedor.setProperty("usuario", usuario);
+			proveedor.setProperty("pass", pass);
+			proveedor.setProperty("nit", nit);
+			proveedor.setProperty("nombre", nombre);
+			proveedor.setProperty("telefono", telefono);
+			proveedor.setProperty("etiquetas", etiquetas);
+		}else{
+			throw new Exception("El usuario ya existe");
+		}
 	}
 	
 
@@ -81,8 +108,29 @@ public class Proveedor {
 	 * @param nit
 	 * @return
 	 */
-	public static Entity getSingleProveedor(String usuario, String pass) {
-		Key key = KeyFactory.createKey("Proveedor", usuario+'/'+pass);
+	public static Entity getSingleProveedor(String usuario) {
+		Key key = KeyFactory.createKey("Proveedor", usuario);
 		return Util.findEntity(key);
+	}
+	/**
+	 * Validar un Prooveedor
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 15/11/2013
+	 * @return
+	 */
+	
+	public static Entity validateProveedor(String usuario, String pass){
+		Key key = KeyFactory.createKey("Proveedor", usuario);
+		Entity entity = Util.findEntity(key);
+		
+		if (entity == null) {
+			return null;
+		}
+		
+		String entityPass = (String) entity.getProperty("pass");
+		if (entityPass.equalsIgnoreCase(pass)) {
+			return entity;
+		}else
+			return null;
 	}
 }

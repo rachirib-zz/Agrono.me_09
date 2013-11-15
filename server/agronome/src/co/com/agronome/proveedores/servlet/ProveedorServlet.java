@@ -65,7 +65,6 @@ public class ProveedorServlet extends HttpServlet{
 		String etiquetas = req.getParameter("etiquetas");
 		String telefono = req.getParameter("telefono");
 		Proveedor.createOrUpdateProveedor(usuario, pass, nit, nombre, etiquetas, telefono);
-		resp.sendRedirect("index.html");
 	}
 
 	/**

@@ -1,18 +1,15 @@
 package co.com.agronome.proveedores.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.datastore.Entity;
-
 import co.com.agronome.proveedores.modelo.Proveedor;
+
+import com.google.appengine.api.datastore.Entity;
 
 /**
  * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
@@ -45,14 +42,12 @@ public class LoginServlet extends HttpServlet{
 		String usuario = req.getParameter("usuario");
 		String pass = req.getParameter("pass");
 		
-		Entity proveedor = Proveedor.getSingleProveedor(usuario, pass);
+		Entity proveedor = Proveedor.validateProveedor(usuario, pass);
 		if (proveedor != null) {
 			req.getSession().setAttribute("user", proveedor);
-			resp.sendRedirect("editar.html");
 		}else{
 			return;
 		}
 		
-		super.doPost(req, resp);
 	}
 }

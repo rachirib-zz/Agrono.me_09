@@ -5,10 +5,10 @@ var ENTITY_ITEM='item';
 var ENTITY_ORDER='order';
 var ENTITY_PROVEEDOR='proveedor';
 
-function login(){
-	var login = $("#login").val();
+function loginUser(){
+	var login = $("#usuario").val();
 	var pass = $("#pass").val();
-	
+	var hasError = false;
 	if(login == "" ){
 		hasError = true;
 	}
@@ -23,7 +23,7 @@ function login(){
 	
 	 var data=new Array();
 		// collecting the field values from the form
-		 var formEleList = $('form#login').serializeArray();
+		 var formEleList = $('form#loginForm').serializeArray();
 		 for(var i=0;i<formEleList.length;i++){
 			data[data.length]=new param(formEleList[i].name,formEleList[i].value);
 		 }
@@ -35,7 +35,11 @@ function login(){
 				type : "POST",
 				data:data,
 				success : function(data) {
-					showHideCreate(entity,false);
+					if (data != '') {
+						window.location.href="editar.html";
+					}else{
+						$('#login-show-message').show().html('<p><b>Usuario Inválido</b></p>');
+					}
 				}
 			});
 }
@@ -202,6 +206,26 @@ var formValidate = function(entity){
 				showMessage('Por favor ingrese los valores obligatorios', entity);
 				return;
 			}
+			// creating the data object to be sent to backend
+			 var data=new Array();
+			// collecting the field values from the form
+			 var formEleList = $('form#'+entity+'-create-form').serializeArray();
+			 for(var i=0;i<formEleList.length;i++){
+				data[data.length]=new param(formEleList[i].name,formEleList[i].value);
+			 }
+			 //setting action as PUT
+			 data[data.length]=new param('action','PUT');
+			 //making the ajax call
+			 $.ajax({
+					url : "/"+entity,
+					type : "POST",
+					data:data,
+					success : function(data) {
+						window.location.href="index.html";
+					}
+				});
+			 
+			
 			break;
 		default :
 			if(key==""){
@@ -210,7 +234,7 @@ var formValidate = function(entity){
 			}
 			break;
 	}
-	save(entity);
+	
 	$('#'+entity+'-show-message').hide();
 }
 
@@ -235,7 +259,7 @@ var save = function(entity) {
 				showHideCreate(entity,false);
 			}
 		});
-	 $('#'+entity+'-reset').click();
+	 
 }
 
 //function to edit entity

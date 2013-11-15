@@ -15,7 +15,7 @@
   <script language="javascript" src='script/ajax.util.js'></script>
   <script type="text/javascript">
  	 $( document ).ready(function() {
- 		var usuario = $("#userSession");
+ 		var usuario = $("#userSession").val();
  		$("#nit").val( usuario.nit );
  		$("#nombre").val( usuario.nombre );
 		$("#telefono").val( usuario.telefono);
@@ -26,13 +26,13 @@
 </head>
 
 <body>
-	<input type="hidden" name="userSession" value="${sessionScope.user} />
+	<input type="hidden" name="userSession" value="${sessionScope.user}" />
 	<!-- ******************************************* Proveedor ******************************************* -->
 	<div class="g-unit" id="customer-tab">
 		<div class="message" id="proveedor-show-message" style="display: none">
 		</div>
 		<div class="create-ctr" id="proveedor-create-ctr">
-			<h2>Creación Proveedor</h2>
+			<h2>Actualización de Datos Proveedor</h2>
 			<form name="proveedor-create-form" id="proveedor-create-form">
 				<table width="200" cellspacing="0" cellpadding="0">
 					<tbody>
