@@ -13,10 +13,20 @@
  <link href="http://code.google.com/css/codesite.pack.04102009.css" rel="stylesheet" type="text/css" />
   <script language="javascript" src='script/jquery-1.6.min.js'></script>
   <script language="javascript" src='script/ajax.util.js'></script>
-<title>Registro de Proveedores</title>
+  <script type="text/javascript">
+ 	 $( document ).ready(function() {
+ 		var usuario = $("#userSession");
+ 		$("#nit").val( usuario.nit );
+ 		$("#nombre").val( usuario.nombre );
+		$("#telefono").val( usuario.telefono);
+		$("#etiquetas").val(usuario.etiquetas);
+	});
+  </script>
+<title>Editar Info de Proveedores</title>
 </head>
 
 <body>
+	<input type="hidden" name="userSession" value="${sessionScope.user} />
 	<!-- ******************************************* Proveedor ******************************************* -->
 	<div class="g-unit" id="customer-tab">
 		<div class="message" id="proveedor-show-message" style="display: none">
@@ -26,24 +36,6 @@
 			<form name="proveedor-create-form" id="proveedor-create-form">
 				<table width="200" cellspacing="0" cellpadding="0">
 					<tbody>
-						<tr>
-							<td>Usuario(*)</td>
-							<td><span class="readonly"><input type="text"
-									style="width: 185px;" autocomplete="off" class="gsc-input"
-									maxlength="2048" name="usuario" id="usuario" /></span></td>
-						</tr>
-						<tr>
-							<td>Contraseña(*)</td>
-							<td><span class="readonly"><input type="password"
-									style="width: 185px;" autocomplete="off" class="gsc-input"
-									maxlength="2048" name="pass" id="pass" /></span></td>
-						</tr>
-						<tr>
-							<td>Confirmar Contraseña(*)</td>
-							<td><span class="readonly"><input type="password"
-									style="width: 185px;" autocomplete="off" class="gsc-input"
-									maxlength="2048" name="cnfpass" id="cnfpass" /></span></td>
-						</tr>
 						<tr>
 							<td>Nit(*)</td>
 							<td><span class="readonly"><input type="text"

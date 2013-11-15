@@ -21,14 +21,18 @@ public class Proveedor {
 	 * Clase para crear y actualizar un proveedor
 	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
 	 * @date 15/11/2013
+	 * @param usuario TODO
+	 * @param pass TODO
 	 * @param nombre
-	 * @param rate
 	 * @param etiquetas
+	 * @param rate
 	 */
-	public static void createOrUpdateProveedor(String nit,  String nombre, String etiquetas, String telefono){
-		Entity proveedor = getSingleProveedor(nombre);
+	public static void createOrUpdateProveedor(String usuario,  String pass, String nit, String nombre, String etiquetas, String telefono){
+		Entity proveedor = getSingleProveedor(usuario,pass);
 		if (proveedor == null) {
-			proveedor = new Entity("Proveedor", nit);
+			proveedor = new Entity("Proveedor", usuario+"/"+pass);
+			proveedor.setProperty("usuario", usuario);
+			proveedor.setProperty("pass", pass);
 			proveedor.setProperty("nit", nit);
 			proveedor.setProperty("nombre", nombre);
 			proveedor.setProperty("telefono", telefono);
@@ -77,8 +81,8 @@ public class Proveedor {
 	 * @param nit
 	 * @return
 	 */
-	public static Entity getSingleProveedor(String nit) {
-		Key key = KeyFactory.createKey("Proveedor", nit);
+	public static Entity getSingleProveedor(String usuario, String pass) {
+		Key key = KeyFactory.createKey("Proveedor", usuario+'/'+pass);
 		return Util.findEntity(key);
 	}
 }

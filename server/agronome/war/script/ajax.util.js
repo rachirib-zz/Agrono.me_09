@@ -5,6 +5,42 @@ var ENTITY_ITEM='item';
 var ENTITY_ORDER='order';
 var ENTITY_PROVEEDOR='proveedor';
 
+function login(){
+	var login = $("#login").val();
+	var pass = $("#pass").val();
+	
+	if(login == "" ){
+		hasError = true;
+	}
+	if(pass == ""){
+		hasError = true;
+	}
+	
+	if(hasError == true){
+		$('#login-show-message').show().html('<p><b>No ha ingresado los datos obligatorios</b></p>');
+		return;
+	}
+	
+	 var data=new Array();
+		// collecting the field values from the form
+		 var formEleList = $('form#login').serializeArray();
+		 for(var i=0;i<formEleList.length;i++){
+			data[data.length]=new param(formEleList[i].name,formEleList[i].value);
+		 }
+		 //setting action as PUT
+		 data[data.length]=new param('action','PUT');
+		//making the ajax call
+		 $.ajax({
+				url : "/login",
+				type : "POST",
+				data:data,
+				success : function(data) {
+					showHideCreate(entity,false);
+				}
+			});
+}
+
+
 //function to initialize the page
 var init = function() {
 	//showing the home tab on initializing
@@ -136,11 +172,22 @@ var formValidate = function(entity){
 			break;
 		case ENTITY_PROVEEDOR:
 			var hasError = false;
-			
+			var usuario = $("#usuario").val();
+			var pass = $("#pass").val();
+			var confpass = $("#confpass").val();
 			var nombre = $("#nombre").val();
 			var telefono = $("#telefono").val();
 			var etiquetas = $("#etiquetas").val();
 			
+			if(usuario == "" || key == ""){
+				hasError = true;
+			}
+			if(pass == "" || key == ""){
+				hasError = true;
+			}
+			if(confpass == "" || key == ""){
+				hasError = true;
+			}
 			if(nombre == "" || key == ""){
 				hasError = true;
 			}
@@ -166,6 +213,7 @@ var formValidate = function(entity){
 	save(entity);
 	$('#'+entity+'-show-message').hide();
 }
+
 
 //function to save an entity
 var save = function(entity) {

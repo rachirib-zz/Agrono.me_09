@@ -58,11 +58,14 @@ public class ProveedorServlet extends HttpServlet{
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		logger.log(Level.INFO, "Creating Proveedor");
+		String usuario = req.getParameter("usuario");
+		String pass = req.getParameter("pass");
 		String nit = req.getParameter("nit");
 		String nombre = req.getParameter("nombre");
 		String etiquetas = req.getParameter("etiquetas");
 		String telefono = req.getParameter("telefono");
-		Proveedor.createOrUpdateProveedor(nit, nombre, etiquetas, telefono);
+		Proveedor.createOrUpdateProveedor(usuario, pass, nit, nombre, etiquetas, telefono);
+		resp.sendRedirect("index.html");
 	}
 
 	/**
