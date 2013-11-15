@@ -1,6 +1,7 @@
 package co.com.agronome.proveedores.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -45,6 +46,8 @@ public class LoginServlet extends HttpServlet{
 		Entity proveedor = Proveedor.validateProveedor(usuario, pass);
 		if (proveedor != null) {
 			req.getSession().setAttribute("user", proveedor);
+			PrintWriter out = resp.getWriter();
+			out.append("OK");
 		}else{
 			return;
 		}
