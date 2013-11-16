@@ -188,14 +188,44 @@ public class Proveedor {
 		List<ProveedorDTO> lista = new ArrayList<ProveedorDTO>();
 		for (Entity entity : allProveedores) {
 			ProveedorDTO dto  = new ProveedorDTO();
-			dto.setNit((String) entity.getProperty("nit"));
-			dto.setNombre((String) entity.getProperty("nombre"));
-			dto.setTelefono((String) entity.getProperty("telefono"));
-			dto.setLatitud((String) entity.getProperty("latitud"));
-			dto.setLongitud((String) entity.getProperty("longitud"));
-			dto.setRating((Long) entity.getProperty("rate"));
+			mapEntityProveedor(entity, dto);
 			lista.add(dto);
 		}
 		return lista;
+	}
+
+	/**
+	 * Mapeo de Entitidad de Entidades a Proveedor
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 16/11/2013
+	 * @param entity
+	 * @param dto
+	 */
+	private static void mapEntityProveedor(Entity entity, ProveedorDTO dto) {
+		dto.setUsuario((String) entity.getProperty("usuario"));
+		dto.setNit((String) entity.getProperty("nit"));
+		dto.setNombre((String) entity.getProperty("nombre"));
+		dto.setTelefono((String) entity.getProperty("telefono"));
+		dto.setLatitud((String) entity.getProperty("latitud"));
+		dto.setLongitud((String) entity.getProperty("longitud"));
+		Long valueLong = (Long) entity.getProperty("rate");
+		dto.setRating(valueLong != null ? valueLong.toString():null);
+	}
+	
+	/**
+	 * Consultar Proveedor por Usuario
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 16/11/2013
+	 * @param usuario
+	 * @return
+	 */
+	public static ProveedorDTO consultarProveedorPorUsuario(String usuario){
+		Entity entity = Proveedor.getSingleProveedor(usuario);
+		if (entity == null) {
+			return null;
+		}
+		ProveedorDTO dto = new ProveedorDTO();
+		mapEntityProveedor(entity, dto);
+		return dto;
 	}
 }

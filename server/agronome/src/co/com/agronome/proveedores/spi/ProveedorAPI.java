@@ -38,5 +38,16 @@ public class ProveedorAPI {
 	public List<ProveedorDTO> consultarProveedorPorTag(@Named("tagname") String tagName){
 		return Proveedor.consultarProveedoresAPI(tagName);
 	}
+	/**
+	 * Consulta de Proveedor por usuario
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 15/11/2013
+	 * @param usuario
+	 * @return
+	 */
+	@ApiMethod(name = "proveedor.consultarproveedorporusuario", httpMethod = "POST")
+	public ProveedorDTO consultarProveedorPorUsuario(@Named("usuario") String usuario){
+		return Proveedor.consultarProveedorPorUsuario(usuario);
+	}
 
 }

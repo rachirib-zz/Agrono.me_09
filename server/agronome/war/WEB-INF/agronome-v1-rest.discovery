@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/tbPFROFZVXp73bnztDeO7ewu6BY\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/oaYHDf5tbPMqZmunkq1JvZIOe1s\"",
  "discoveryVersion": "v1",
  "id": "agronome:v1",
  "name": "agronome",
@@ -11,10 +11,10 @@
   "x32": "http://www.google.com/images/icons/product/search-32.gif"
  },
  "protocol": "rest",
- "baseUrl": "https://agrono-me.appspot.com/_ah/api/agronome/v1/consultarProveedorPorTag/",
- "basePath": "/_ah/api/agronome/v1/consultarProveedorPorTag/",
+ "baseUrl": "https://agrono-me.appspot.com/_ah/api/agronome/v1/",
+ "basePath": "/_ah/api/agronome/v1/",
  "rootUrl": "https://agrono-me.appspot.com/_ah/api/",
- "servicePath": "agronome/v1/consultarProveedorPorTag/",
+ "servicePath": "agronome/v1/",
  "batchPath": "batch",
  "parameters": {
   "alt": {
@@ -91,10 +91,12 @@
      "type": "string"
     },
     "rating": {
-     "type": "integer",
-     "format": "int32"
+     "type": "string"
     },
     "telefono": {
+     "type": "string"
+    },
+    "usuario": {
      "type": "string"
     }
    }
@@ -115,9 +117,30 @@
  "resources": {
   "proveedor": {
    "methods": {
+    "consultarproveedorporusuario": {
+     "id": "agronome.proveedor.consultarproveedorporusuario",
+     "path": "consultarProveedorPorUsuario/{usuario}",
+     "httpMethod": "POST",
+     "parameters": {
+      "usuario": {
+       "type": "string",
+       "required": true,
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "usuario"
+     ],
+     "response": {
+      "$ref": "ProveedorDTO"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+     ]
+    },
     "consultarproveedortag": {
      "id": "agronome.proveedor.consultarproveedortag",
-     "path": "{tagname}",
+     "path": "consultarProveedorPorTag/{tagname}",
      "httpMethod": "POST",
      "parameters": {
       "tagname": {

@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/agronome/v1/20131116041349/java/1.16.0-rc/agrono_me_appspot_com-agronome-v1-20131116041349-java-1.16.0-rc-sources.jar", 
-      "path": "agrono_me_appspot_com-agronome-v1-20131116041349-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/agronome/v1/20131116165841/java/1.16.0-rc/agrono_me_appspot_com-agronome-v1-20131116165841-java-1.16.0-rc-sources.jar", 
+      "path": "agrono_me_appspot_com-agronome-v1-20131116165841-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-11-16 04:13"
+      "timestamp": "2013-11-16 16:58"
     }, 
     {
-      "path": "agrono_me_appspot_com-agronome-v1-20131116041349-java-1.16.0-rc.jar.properties", 
+      "path": "agrono_me_appspot_com-agronome-v1-20131116165841-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -701,5 +701,5 @@
   "version": "v1", 
   "language_version": "1.16.0-rc", 
   "id": "agronome:v1", 
-  "revision": 20131116041349
+  "revision": 20131116165841
 }

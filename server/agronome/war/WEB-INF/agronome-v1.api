@@ -44,6 +44,27 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "agronome.proveedor.consultarproveedorporusuario" : {
+      "path" : "consultarProveedorPorUsuario/{usuario}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ "1076828712917" ],
+      "clientIds" : [ "1076828712917", "replace this with your Android client ID", "replace this with your iOS client ID" ],
+      "rosyMethod" : "co.com.agronome.proveedores.spi.ProveedorAPI.consultarProveedorPorUsuario",
+      "request" : {
+        "parameters" : {
+          "usuario" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
@@ -52,6 +73,9 @@
         "id" : "ProveedorDTO",
         "type" : "object",
         "properties" : {
+          "usuario" : {
+            "type" : "string"
+          },
           "nit" : {
             "type" : "string"
           },
@@ -68,8 +92,7 @@
             "type" : "string"
           },
           "rating" : {
-            "type" : "string",
-            "format" : "int64"
+            "type" : "string"
           },
           "ciudad" : {
             "type" : "string"
@@ -93,6 +116,11 @@
       "co.com.agronome.proveedores.spi.ProveedorAPI.consultarProveedorPorTag" : {
         "response" : {
           "$ref" : "ProveedorDTOCollection"
+        }
+      },
+      "co.com.agronome.proveedores.spi.ProveedorAPI.consultarProveedorPorUsuario" : {
+        "response" : {
+          "$ref" : "ProveedorDTO"
         }
       }
     }

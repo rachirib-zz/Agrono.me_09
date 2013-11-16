@@ -11,21 +11,21 @@ package co.com.agronome.proveedores.spi.model;
  */
 public class ProveedorDTO {
 	
+	private String usuario;
 	private String nit;
 	private String nombre;
 	private String telefono;
 	private String latitud;
 	private String longitud;
-	private Long rating;
+	private String rating;
 	private String ciudad;
-	
 	
 	/**
 	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
 	 * @date 15/11/2013
 	 * @return the rating
 	 */
-	public Long getRating() {
+	public String getRating() {
 		return rating;
 	}
 	/**
@@ -33,7 +33,7 @@ public class ProveedorDTO {
 	 * @date 15/11/2013
 	 * @param rating the rating to set
 	 */
-	public void setRating(Long rating) {
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
 	/**
@@ -131,6 +131,23 @@ public class ProveedorDTO {
 	 */
 	public void setLongitud(String longitud) {
 		this.longitud = longitud;
+	}
+	
+	/**
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 16/11/2013
+	 * @return the usuario
+	 */
+	public String getUsuario() {
+		return usuario;
+	}
+	/**
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 16/11/2013
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	
 	

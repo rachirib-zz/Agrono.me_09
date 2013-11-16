@@ -9,7 +9,7 @@
         <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
         <script src="script/jquery-gmaps-latlon-picker.js"></script>
         <script src="script/jquery-gmaps-latlon-picker.js"></script>
-        <title>Agrono.me | Registro</title>
+        <title>Agrono.me | Editar Información</title>
 		<script type="text/javascript">
 		 	 $( document ).ready(function() {
 		 		obtenerUsuarioSession();
@@ -44,6 +44,9 @@
                             <div class="gllpMap">Google Maps</div><br/> 
                             <input id="latitud" type="hidden" name="latitud" class="gllpLatitude" value="20" required=""/> 
                             <input type="hidden" name="longitud" id="longitud"class="gllpLongitude" value="20" required="" />
+                             <input type="text"class="gllpZoom" value="3" style="visibility: hidden;"/> 
+                             <input type="button"
+						class="gllpUpdateButton" value="Actualizar Mapa" style="visibility: hidden;"> <br />
                         </fieldset>	
                     </aside>
 					

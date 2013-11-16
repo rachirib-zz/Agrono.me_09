@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/tbPFROFZVXp73bnztDeO7ewu6BY\"",
+ "etag": "\"doS0mIKix6_L3_LoT-sZZjofha4/oaYHDf5tbPMqZmunkq1JvZIOe1s\"",
  "discoveryVersion": "v1",
  "id": "agronome:v1",
  "name": "agronome",
@@ -89,10 +89,12 @@
      "type": "string"
     },
     "rating": {
-     "type": "integer",
-     "format": "int32"
+     "type": "string"
     },
     "telefono": {
+     "type": "string"
+    },
+    "usuario": {
      "type": "string"
     }
    }
@@ -111,6 +113,24 @@
   }
  },
  "methods": {
+  "agronome.proveedor.consultarproveedorporusuario": {
+   "id": "agronome.proveedor.consultarproveedorporusuario",
+   "parameters": {
+    "usuario": {
+     "type": "string",
+     "required": true
+    }
+   },
+   "parameterOrder": [
+    "usuario"
+   ],
+   "returns": {
+    "$ref": "ProveedorDTO"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
   "agronome.proveedor.consultarproveedortag": {
    "id": "agronome.proveedor.consultarproveedortag",
    "parameters": {
