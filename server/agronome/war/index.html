@@ -2,138 +2,50 @@
 
 <html lang="ES">
 <head>
-
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<script language="javascript" src='script/jquery-1.6.min.js'></script>
-<script language="javascript" src='script/ajax.util.js'></script>
-<link rel="stylesheet" href="css/normalize.css">
-
-
-<title>Agrono.me | Registro</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script language="javascript" src='script/jquery-1.6.min.js'></script>
+  	<script language="javascript" src='script/ajax.util.js'></script>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/estiloslog.css">
+	<title>Agrono.me | Registro</title>
 </head>
-<style type="text/css">
-a{
-	text-align: center;
-	text-decoration: none;
-	font-size: 12px;
-	color: #4D90FE;
-	margin: 1em 0 0 2em;
-}
-body {
-	background: #fff;
-	margin: 0 auto;
-	font-family: helvetica, arial;
-	font-size: 16px;
-}
 
-.contenedor {
-	width: 960px;
-	margin: 0 auto;
-}
 
-h1 {
-	text-align: center;
-	padding: 2em 0;
-}
-
-form {
-	background-color: #F4F5F7;
-	width: 190px;
-	height: 190px;
-	border: 1px solid #ccc;
-	padding: 0 1em;
-	color: #666;
-	border-radius: .2em;
-	display: block;
-	margin: 0 auto
-}
-
-form h2 {
-	text-align: center;
-	background-color: #EAEFF3;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#EAEFF3),
-		to(#D7DAE0));
-	background-image: -webkit-linear-gradient(top, #EAEFF3, #D7DAE0);
-	background-image: -moz-linear-gradient(top, #EAEFF3, #D7DAE0);
-	background-image: -o-linear-gradient(top, #EAEFF3, #D7DAE0);
-	background-image: linear-gradient(to bottom, #EAEFF3, #D7DAE0);
-	border-radius: .2em .2em 0 0;
-	color: #646567;
-	padding: .4em;
-	width: 206px;
-	margin: 0 0 1em -.8em;
-	position: relative;
-	text-shadow: 0 1px 0 rgba(256, 256, 256, 0.7);
-	font-weight: lighter;
-	font-size: 20px;
-}
-
-form input {
-	display: block;
-	border: 0;
-	width: 260px;
-	height: 1em;
-	padding: .5em .1em;
-	font-size: 13px;
-	font-weight: lighter;
-	text-indent: 6%;
-	margin-bottom: .5em;
-	border: #ccc solid 1px;
-}
-
-form .save {
-	background-color: #3993FF;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#3993FF),
-		to(#195ECA));
-	background-image: -webkit-linear-gradient(top, #3993FF, #195ECA);
-	background-image: -moz-linear-gradient(top, #3993FF, #195ECA);
-	background-image: -o-linear-gradient(top, #3993FF, #195ECA);
-	background-image: linear-gradient(to bottom, #3993FF, #195ECA);
-	color: #ffffff;
-	border: #256AB3 solid 1px !important;
-	height: 40px;
-	width: 100%;
-	margin: .5em 0 1em 0 !important;
-	display: inline;
-	vertical-align: baseline;
-	border-radius: .2em;
-	font-size: 16px;
-}
-
-.clear {
-	clear: both;
-}
-</style>
 
 <body>
 
-	<div class="contenedor">
-		<h1>
-			<img src="img/logosmall.png" alt="Agronome | Agranomie Marketplace">
-		</h1>
-		<div class="login-create-ctr" id="login-ctr"></div>
+		<div class="contenedor">
+			<a href="index.html"><h1><img src="img/logoAgronomeWhite.png" alt="Agronome"></h1></a>
 
-		<form name="login" id="loginForm">
-
-			<div id="cabeza-de-login">
-				<h2>Login</h2>
-			</div>
-			<div class="clear">
-
-
-				<span class="readonly"><input type="text"  required="required"
-					style="width: 185px;" autocomplete="off" class="gsc-input"
-					maxlength="2048" name="usuario" id="usuario" placeholder="Nombre*" /></span>
-
-
-				<input type="password" style="width: 185px;" autocomplete="off" required="required"
-					class="gsc-input" maxlength="2048" name="pass" id="pass"
-					placeholder="Contraseña*" /> <input type="button" class="save"
-					title="Ingresar" value="Ingresar" onclick="loginUser();" /> <a></a>
-				<a href="registro.html">Crear una cuenta</a>
+			
+				<form name="login" id="login">
+				
+				<div id="cabeza-de-login">
+					<h2>Acceder</h2>
 				</div>
-		</form>
-		<div class="message" id="login-show-message" style="display: none"></div>
+				<div class="clear">
+						<span class="readonly"><input type="text"
+									style="width: 285px;" autocomplete="off" class="gsc-input"
+									maxlength="2048" name="usuario" id="usuario" placeholder="Nombre*" /></span>
+
+
+						<input type="password" style="width: 285px;"
+								autocomplete="off" class="gsc-input" maxlength="2048"
+								name="contraseña" id="contraseña" placeholder="Contraseña*"/>
+
+						<input type="button" class="save" title="Ingresar"
+								value="Ingresar" onclick="login()" /> <a
+								href="registro.html" name="Registrarme"></a>
+
+					<a href="registro.html">Crear una cuenta</a>
+
+
+				</form>
+
+				<div class="message" id="login-show-message" style="display: none"></div>
+			
+			</div>
 	</div>
 </body>
+
 </html>
