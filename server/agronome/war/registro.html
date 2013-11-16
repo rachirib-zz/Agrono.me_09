@@ -18,6 +18,15 @@
 <script language="javascript" src='script/ajax.util.js'></script>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="script/jquery-gmaps-latlon-picker.js"></script>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+	
+	$('#latitud').val(4.681345111873303);
+	$('#longitud').val( -73.9990234375);
+	$(".gllpUpdateButton").click();
+});
+</script>
 <title>Agrono.me | Registro</title>
 <style type="text/css">
 .gllpMap {
@@ -167,10 +176,10 @@ form .save {
 				</fieldset>
 
 				<input type="button" class="save" title="Save" value="Registrarme"
-					onclick="formValidate('proveedor')" /> <a href="index.html">Volver</a>
+					onclick="guardarProveedor()" /> <a href="index.html">Volver</a>
 			</form>
 		</div>
-
+		<div class="message" id="proveedor-show-message" style="display: none"></div>
 	</div>
 </body>
 </html>

@@ -1,10 +1,10 @@
 package co.com.agronome.proveedores.spi;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Named;
 
+import co.com.agronome.proveedores.modelo.Proveedor;
 import co.com.agronome.proveedores.spi.model.ProveedorDTO;
 
 import com.google.api.server.spi.config.Api;
@@ -36,25 +36,7 @@ public class ProveedorAPI {
 	 */
 	@ApiMethod(name = "proveedor.consultarproveedortag", httpMethod = "POST")
 	public List<ProveedorDTO> consultarProveedorPorTag(@Named("tagname") String tagName){
-		ProveedorDTO dto  = new ProveedorDTO();
-		dto.setNit("123123");
-		dto.setNombre("asdasd");
-		dto.setTelefono("123132");
-		dto.setLatitud("123");
-		dto.setLongitud("123123");
-		
-		ProveedorDTO dto2  = new ProveedorDTO();
-		dto.setNit("asdasd");
-		dto.setNombre("123123");
-		dto.setTelefono("123132");
-		dto.setLatitud("123");
-		dto.setLongitud("123123");
-		
-		List<ProveedorDTO> lista = new ArrayList<ProveedorDTO>();
-		lista.add(dto);
-		lista.add(dto2);
-		
-		return lista;
+		return Proveedor.consultarProveedoresAPI(tagName);
 	}
 
 }

@@ -16,7 +16,7 @@ public class ProveedorDTO {
 	private String telefono;
 	private String latitud;
 	private String longitud;
-	private int rating;
+	private Long rating;
 	private String ciudad;
 	
 	
@@ -25,7 +25,7 @@ public class ProveedorDTO {
 	 * @date 15/11/2013
 	 * @return the rating
 	 */
-	public int getRating() {
+	public Long getRating() {
 		return rating;
 	}
 	/**
@@ -33,7 +33,7 @@ public class ProveedorDTO {
 	 * @date 15/11/2013
 	 * @param rating the rating to set
 	 */
-	public void setRating(int rating) {
+	public void setRating(Long rating) {
 		this.rating = rating;
 	}
 	/**
