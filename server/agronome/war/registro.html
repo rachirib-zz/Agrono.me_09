@@ -153,7 +153,18 @@ form .save {
 					placeholder="Etiquetas*" />
 
 
-				
+				<fieldset class="gllpLatlonPicker">
+					<input type="text" class="gllpSearchField"> <input
+						type="button" class="gllpSearchButton" value="Buscar"> <br />
+					<br />
+					<div class="gllpMap" style="width: 500px; height: 250px">Google
+						Maps</div>
+					<br /> <input id="latitud" type="hidden" name="latitud" class="gllpLatitude"
+						value="20" required="" /> <input type="hidden" name="longitud" id="longitud"
+						class="gllpLongitude" value="20" required="" /> zoom: <input
+						type="text" class="gllpZoom" value="3" /> <input type="button"
+						class="gllpUpdateButton" value="Actualizar Mapa"> <br />
+				</fieldset>
 
 				<input type="button" class="save" title="Save" value="Registrarme"
 					onclick="formValidate('proveedor')" /> <a href="index.html">Volver</a>
