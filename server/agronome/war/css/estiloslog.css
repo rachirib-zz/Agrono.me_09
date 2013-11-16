@@ -37,7 +37,7 @@ h1 img{
 
 form{
   background: #F7F7F7;
-  width: 190px;
+  width: 290px;
   position: relative;
   border: 1px solid #ccc;
   padding: 0 1em 1em 1em;
@@ -61,7 +61,7 @@ form h2{
 	border-radius: .2em .2em 0 0;
 	color: #646567;
 	padding: .4em;
-	width: 206px;
+	width: 307px;
 	margin: 0 0 1em -.8em;
 	position: relative;
 	text-shadow: 0 1px 0 rgba(256,256,256,0.7);
@@ -103,7 +103,7 @@ form input:nth-child(2){
 }
 
 
-form .save{
+form .save {
   	background-color: #3993FF;
   	background-image: -webkit-gradient(linear, left top, left bottom, from(#3993FF), to(#195ECA));
   	background-image: -webkit-linear-gradient(top, #3993FF, #195ECA);
@@ -120,6 +120,12 @@ form .save{
 	border-radius: .2em; 
 	font-size: 16px;
 	text-indent: 4%;
+}
+
+
+fieldset{
+	background: #fff;
+	width: 200px;
 }
 
 #proveedor-create-form input{
@@ -143,7 +149,29 @@ form .save{
 	margin: 0 auto;
 }
 
+.gllpMap {
+	width: 260px;
+	height: 340px;
+}
 
+.gllpSearchButton, .gllpUpdateButton{
+	background-color: #3993FF !important;
+	color: #ffffff;
+	border: #256AB3 solid 1px !important;
+	height: 40px;
+	width: 100%;
+	margin: 1em 0 1em 0 !important;
+	display: inline;
+	vertical-align: baseline;	
+	border-radius: .2em; 
+	font-size: 16px;
+	text-indent: 4%;
+}
+
+.gllpLatlonPicke{
+	border-bottom: 1px solid #256AB3 !important;
+	margin-bottom: 10px;
+}
 
 @media screen and (max-width:1000px){  
  body, h1 img{
@@ -155,13 +183,17 @@ form .save{
 
 
  body {
-	background: url(../img/bg_log.jpg)  top center, no-repeat, fixed;
+	background: url(../img/bg_log.jpg)  top center, no-repeat;
+	background-attachment: fixed !important;
  }  
 
  h1 img{
 	width: 230px;
 	margin-left: 10px;
 }
+
                        
   
-}  
+}
+
+
