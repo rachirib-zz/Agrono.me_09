@@ -64,7 +64,10 @@ public class ProveedorServlet extends HttpServlet{
 		String nombre = req.getParameter("nombre");
 		String etiquetas = req.getParameter("etiquetas");
 		String telefono = req.getParameter("telefono");
-		Proveedor.createOrUpdateProveedor(usuario, pass, nit, nombre, etiquetas, telefono);
+		String latitud = req.getParameter("latitud");
+		String longitud = req.getParameter("longitud");
+		Proveedor.createOrUpdateProveedor(usuario, pass, nit, nombre,
+				etiquetas, telefono, latitud, longitud);
 	}
 
 	/**

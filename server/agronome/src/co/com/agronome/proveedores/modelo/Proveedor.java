@@ -25,9 +25,11 @@ public class Proveedor {
 	 * @param pass TODO
 	 * @param nombre
 	 * @param etiquetas
+	 * @param latitud TODO
+	 * @param longitud TODO
 	 * @param rate
 	 */
-	public static void createOrUpdateProveedor(String usuario,  String pass, String nit, String nombre, String etiquetas, String telefono){
+	public static void createOrUpdateProveedor(String usuario,  String pass, String nit, String nombre, String etiquetas, String telefono, String latitud, String longitud){
 		Entity proveedor = getSingleProveedor(usuario);
 		if (proveedor == null) {
 			proveedor = new Entity("Proveedor", usuario);
@@ -37,6 +39,8 @@ public class Proveedor {
 			proveedor.setProperty("nombre", nombre);
 			proveedor.setProperty("telefono", telefono);
 			proveedor.setProperty("etiquetas", etiquetas);
+			proveedor.setProperty("latitud", latitud);
+			proveedor.setProperty("longitud", longitud);
 		} else {
 			if (nombre != null && !"".equals(nombre)) {
 				proveedor.setProperty("nombre", nombre);

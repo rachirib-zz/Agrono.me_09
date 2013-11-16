@@ -182,23 +182,34 @@ var formValidate = function(entity){
 			var nombre = $("#nombre").val();
 			var telefono = $("#telefono").val();
 			var etiquetas = $("#etiquetas").val();
+			var longitud = $("#longitud").val();
+			var latitud = $("#latitud").val();
 			
-			if(usuario == "" || key == ""){
+			if( key == ""){
 				hasError = true;
 			}
-			if(pass == "" || key == ""){
+			if(usuario == ""){
 				hasError = true;
 			}
-			if(confpass == "" || key == ""){
+			if(pass == "" ){
 				hasError = true;
 			}
-			if(nombre == "" || key == ""){
+			if(confpass == "" ){
 				hasError = true;
 			}
-			if(telefono == "" || key == ""){
+			if(nombre == "" ){
 				hasError = true;
 			}
-			if(etiquetas == "" || key == ""){
+			if(telefono == "" ){
+				hasError = true;
+			}
+			if(etiquetas == "" ){
+				hasError = true;
+			}
+			if( longitud == ""){
+				hasError = true;
+			}
+			if( latitud == ""){
 				hasError = true;
 			}
 			

@@ -16,8 +16,15 @@
 	rel="stylesheet" type="text/css" />
 <script language="javascript" src='script/jquery-1.6.min.js'></script>
 <script language="javascript" src='script/ajax.util.js'></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="script/jquery-gmaps-latlon-picker.js"></script>
 <title>Agrono.me | Registro</title>
 <style type="text/css">
+.gllpMap {
+	width: 500px;
+	height: 250px;
+}
+
 a {
 	text-align: center;
 	text-decoration: none;
@@ -119,27 +126,37 @@ form .save {
 
 <body>
 	<div class="create-ctr" id="proveedor-create-ctr">
-			<div class="contenedor">
-				<h1><img src="img/logosmall.png" alt="Agronome | Agranomie Marketplace"></h1>			
+		<div class="contenedor">
+			<h1>
+				<img src="img/logosmall.png" alt="Agronome | Agranomie Marketplace">
+			</h1>
 
 			<form name="proveedor-create-form" id="proveedor-create-form">
 				<h2>Registro</h2>
-				<input type="text"style="width: 185px;" autocomplete="off" class="gsc-input"
-									maxlength="2048" name="usuario" id="usuario" placeholder="Usuario*" />
-						
-				<input type="password" style="width: 185px;" autocomplete="off" maxlength="2048" name="pass" id="pass" placeholder="Contraseña*" />
-				<input type="password"style="width: 185px;" autocomplete="off" maxlength="2048" name="cnfpass" id="cnfpass" placeholder="Confirmar Contraseña*"/>
-				<input type="text"style="width: 185px;" autocomplete="off" class="gsc-input" maxlength="2048" name="nit" id="nit" placeholder="NIT" />
-				
-				<input type="text" style="width: 185px;" autocomplete="off"  maxlength="2048" name="nombre" id="nombre" placeholder="Nombre*"/>
-		
-				<input type="text" style="width: 185px;" autocomplete="off" maxlength="2048" name="telefono" id="telefono" placeholder="Teléfono*"/>
-	
-				<input type="text" style="width: 185px;" autocomplete="off" maxlength="2048"  name="etiquetas" id="etiquetas" placeholder="Etiquetas*"/>
-		
-				<input type="button" class="save" title="Save" value="Registrarme" onclick="formValidate('proveedor')"/>
+				<input type="text" style="width: 185px;" autocomplete="off"
+					class="gsc-input" maxlength="2048" name="usuario" id="usuario"
+					placeholder="Usuario*" /> <input type="password"
+					style="width: 185px;" autocomplete="off" maxlength="2048"
+					name="pass" id="pass" placeholder="Contraseña*" /> <input
+					type="password" style="width: 185px;" autocomplete="off"
+					maxlength="2048" name="cnfpass" id="cnfpass"
+					placeholder="Confirmar Contraseña*" /> <input type="text"
+					style="width: 185px;" autocomplete="off" class="gsc-input"
+					maxlength="2048" name="nit" id="nit" placeholder="NIT" /> <input
+					type="text" style="width: 185px;" autocomplete="off"
+					maxlength="2048" name="nombre" id="nombre" placeholder="Nombre*" />
 
-				<a href="index.html">Volver</a>				
+				<input type="text" style="width: 185px;" autocomplete="off"
+					maxlength="2048" name="telefono" id="telefono"
+					placeholder="Teléfono*" /> <input type="text" style="width: 185px;"
+					autocomplete="off" maxlength="2048" name="etiquetas" id="etiquetas"
+					placeholder="Etiquetas*" />
+
+
+				
+
+				<input type="button" class="save" title="Save" value="Registrarme"
+					onclick="formValidate('proveedor')" /> <a href="index.html">Volver</a>
 			</form>
 		</div>
 
