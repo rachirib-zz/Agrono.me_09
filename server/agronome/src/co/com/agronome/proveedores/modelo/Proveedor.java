@@ -1,6 +1,10 @@
 package co.com.agronome.proveedores.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.com.agronome.proveedores.servlet.Util;
+import co.com.agronome.proveedores.spi.model.ProveedorDTO;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
@@ -67,7 +71,9 @@ public class Proveedor {
 	 * @param telefono
 	 * @throws Exception 
 	 */
-	public static void createProveedor(String usuario,  String pass, String nit, String nombre, String etiquetas, String telefono) throws Exception{
+	public static void createProveedor(String usuario, String pass, String nit,
+			String nombre, String etiquetas, String telefono, String latitud,
+			String longitud) throws Exception {
 		Entity proveedor = getSingleProveedor(usuario);
 		if (proveedor == null) {
 			proveedor = new Entity("Proveedor", usuario);
@@ -77,6 +83,38 @@ public class Proveedor {
 			proveedor.setProperty("nombre", nombre);
 			proveedor.setProperty("telefono", telefono);
 			proveedor.setProperty("etiquetas", etiquetas);
+			proveedor.setProperty("latitud", latitud);
+			proveedor.setProperty("longitud", longitud);
+			proveedor.setProperty("rate", 0);
+			Util.persistEntity(proveedor);
+		}else{
+			throw new Exception("El usuario ya existe");
+		}
+	}
+	/**
+	 * Actualizar un Proveedor
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 15/11/2013
+	 * @param usuario
+	 * @param pass
+	 * @param nit
+	 * @param nombre
+	 * @param etiquetas
+	 * @param telefono
+	 * @throws Exception 
+	 */
+	public static void actualizarProveedor(String usuario, String pass,
+			String nit, String nombre, String etiquetas, String telefono,
+			String latitud, String longitud) throws Exception {
+		Entity proveedor = getSingleProveedor(usuario);
+		if (proveedor != null) {
+			proveedor.setProperty("nit", nit);
+			proveedor.setProperty("nombre", nombre);
+			proveedor.setProperty("telefono", telefono);
+			proveedor.setProperty("etiquetas", etiquetas);
+			proveedor.setProperty("latitud", latitud);
+			proveedor.setProperty("longitud", longitud);
+			Util.persistEntity(proveedor);
 		}else{
 			throw new Exception("El usuario ya existe");
 		}
@@ -95,14 +133,14 @@ public class Proveedor {
 	}
 
 	/**
-	 * Consultar proveedores por nit
+	 * Consultar proveedores por user
 	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
 	 * @date 15/11/2013
 	 * @param proveedorName
 	 * @return
 	 */
-	public static Iterable<Entity> getProveedor(String nit) {
-		Iterable<Entity> entities = Util.listEntities("Proveedor", "nit",	nit);
+	public static Iterable<Entity> getProveedor(String user) {
+		Iterable<Entity> entities = Util.listEntities("Proveedor", "usuario",	user);
 		return entities;
 	}
 	/**
@@ -136,5 +174,28 @@ public class Proveedor {
 			return entity;
 		}else
 			return null;
+	}
+	
+	/**
+	 * Consulta de los proveedores para exponer en el API
+	 * @author <a href="mailto:rachirib@gmail.com">Ricardo Alberto Chiriboga</a>
+	 * @date 16/11/2013
+	 * @param tagName
+	 * @return
+	 */
+	public static List<ProveedorDTO> consultarProveedoresAPI(String tagName){
+		Iterable<Entity> allProveedores = Proveedor.getAllProveedores();
+		List<ProveedorDTO> lista = new ArrayList<ProveedorDTO>();
+		for (Entity entity : allProveedores) {
+			ProveedorDTO dto  = new ProveedorDTO();
+			dto.setNit((String) entity.getProperty("nit"));
+			dto.setNombre((String) entity.getProperty("nombre"));
+			dto.setTelefono((String) entity.getProperty("telefono"));
+			dto.setLatitud((String) entity.getProperty("latitud"));
+			dto.setLongitud((String) entity.getProperty("longitud"));
+			dto.setRating((Long) entity.getProperty("rate"));
+			lista.add(dto);
+		}
+		return lista;
 	}
 }

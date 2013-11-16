@@ -30,9 +30,18 @@ public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		super.doGet(req, resp);
+		resp.setContentType("application/json; charset=utf-8");
+		resp.setHeader("Cache-Control", "no-cache");
+		String action = req.getParameter("action");
+		PrintWriter out = resp.getWriter();
+		if ("sessionUser".equalsIgnoreCase(action)) {
+			String name =  (String) req.getSession().getAttribute("user");
+			if (name == null) {
+				out.println("ERROR");
+			}else{
+				out.println(Util.writeJSON(Proveedor.getProveedor(name)));
+			}
+		}
 	}
 	
 	/** 
@@ -46,7 +55,7 @@ public class LoginServlet extends HttpServlet{
 		
 		Entity proveedor = Proveedor.validateProveedor(usuario, pass);
 		if (proveedor != null) {
-			req.getSession().setAttribute("user", proveedor);
+			req.getSession().setAttribute("user", proveedor.getKey().getName());
 			PrintWriter out = resp.getWriter();
 			out.append("OK");
 		}else{

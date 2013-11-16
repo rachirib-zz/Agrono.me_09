@@ -53,7 +53,7 @@ public class ProveedorServlet extends HttpServlet{
 	}
 
 	/**
-	 * Insert the new customer
+	 * Insert the new proveedor
 	 */
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -66,8 +66,19 @@ public class ProveedorServlet extends HttpServlet{
 		String telefono = req.getParameter("telefono");
 		String latitud = req.getParameter("latitud");
 		String longitud = req.getParameter("longitud");
-		Proveedor.createOrUpdateProveedor(usuario, pass, nit, nombre,
-				etiquetas, telefono, latitud, longitud);
+		String option = req.getParameter("option");
+		PrintWriter out = resp.getWriter();
+		try {
+			if ("CREATE".equalsIgnoreCase(option)) {
+				Proveedor.createProveedor(usuario, pass, nit, nombre, etiquetas, telefono, latitud, longitud);
+			}else{
+				Proveedor.actualizarProveedor(usuario, pass, nit, nombre, etiquetas, telefono, latitud, longitud);
+			}
+			out.append("OK");
+		} catch (Exception e) {
+			logger.log(Level.WARNING, e.getMessage());
+			out.append(e.getMessage());
+		}
 	}
 
 	/**
@@ -92,3 +103,4 @@ public class ProveedorServlet extends HttpServlet{
 		}
 	}
 }
+

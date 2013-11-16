@@ -68,7 +68,8 @@
             "type" : "string"
           },
           "rating" : {
-            "type" : "integer"
+            "type" : "string",
+            "format" : "int64"
           },
           "ciudad" : {
             "type" : "string"

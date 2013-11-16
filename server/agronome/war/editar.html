@@ -9,17 +9,18 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<link href="http://www.gstatic.com/codesite/ph/17444577587916266307/css/ph_core.css" rel="stylesheet" type="text/css" />
- <link href="http://code.google.com/css/codesite.pack.04102009.css" rel="stylesheet" type="text/css" />
-  <script language="javascript" src='script/jquery-1.6.min.js'></script>
-  <script language="javascript" src='script/ajax.util.js'></script>
-  <script type="text/javascript">
+<link
+	href="http://www.gstatic.com/codesite/ph/17444577587916266307/css/ph_core.css"
+	rel="stylesheet" type="text/css" />
+<link href="http://code.google.com/css/codesite.pack.04102009.css"
+	rel="stylesheet" type="text/css" />
+<script language="javascript" src='script/jquery-1.6.min.js'></script>
+<script language="javascript" src='script/ajax.util.js'></script>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="script/jquery-gmaps-latlon-picker.js"></script>
+<script type="text/javascript">
  	 $( document ).ready(function() {
- 		var usuario = $("#userSession").val();
- 		$("#nit").val( usuario.nit );
- 		$("#nombre").val( usuario.nombre );
-		$("#telefono").val( usuario.telefono);
-		$("#etiquetas").val(usuario.etiquetas);
+ 		obtenerUsuarioSession();
 	});
   </script>
 <title>Agrono.me | Editar Información</title>
@@ -27,74 +28,76 @@
 
 
 <style type="text/css">
+.gllpMap {
+	width: 500px;
+	height: 250px;
+}
 
-a{
+a {
 	text-align: center;
 	text-decoration: none;
 	font-size: 12px;
 	color: #4D90FE;
-	margin: 1em 0 0 2em;
+	margin: .5em 0 0 6.5em;
 }
 
-body{
+body {
 	background: #fff;
 	margin: 0 auto;
 	font-family: helvetica, arial;
 	font-size: 16px;
-
 }
-.contenedor{
+
+.contenedor {
 	width: 960px;
 	margin: 0 auto;
 }
 
-
-h1{
+h1 {
 	text-align: center;
-	padding: 2em 0;
+	padding: 1.2em 0;
 }
 
-
-form{
-  background: #F7F7F7;
-  width: 190px;
-  height: 220px;
-  border: 1px solid #ccc;
-  padding: 0 1em;
-  color: #666;
- border-radius: .2em;
- display:block;
- margin: 0 auto;
-	 -moz-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+form {
+	background: #F7F7F7;
+	width: 190px;
+	height: 390px;
+	border: 1px solid #ccc;
+	padding: 0 1em;
+	color: #666;
+	border-radius: .2em;
+	display: block;
+	margin: 0 auto;
+	-moz-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
 	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
-form h2{
+form h2 {
 	text-align: center;
 	background-color: #EAEFF3;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#EAEFF3), to(#D7DAE0)); 
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EAEFF3),
+		to(#D7DAE0));
 	background-image: -webkit-linear-gradient(top, #EAEFF3, #D7DAE0);
-	background-image:    -moz-linear-gradient(top, #EAEFF3, #D7DAE0); 
-	background-image:      -o-linear-gradient(top, #EAEFF3, #D7DAE0);
-	background-image:         linear-gradient(to bottom, #EAEFF3, #D7DAE0);
+	background-image: -moz-linear-gradient(top, #EAEFF3, #D7DAE0);
+	background-image: -o-linear-gradient(top, #EAEFF3, #D7DAE0);
+	background-image: linear-gradient(to bottom, #EAEFF3, #D7DAE0);
 	border-radius: .2em .2em 0 0;
 	color: #646567;
 	padding: .4em;
 	width: 206px;
 	margin: 0 0 1em -.8em;
 	position: relative;
-	text-shadow: 0 1px 0 rgba(256,256,256,0.7);
+	text-shadow: 0 1px 0 rgba(256, 256, 256, 0.7);
 	font-weight: lighter;
 	font-size: 20px;
 }
 
-
-form input{
+form input {
 	display: block;
 	border: 0;
 	width: 260px;
-	height: 1em;
+	height: 28px;
 	padding: .5em .1em;
 	font-size: 13px;
 	font-weight: lighter;
@@ -102,83 +105,73 @@ form input{
 	margin-bottom: .5em;
 	border: #ccc solid 1px;
 }
-	
 
-
-form .save{
-  	background-color: #3993FF;
-  	background-image: -webkit-gradient(linear, left top, left bottom, from(#3993FF), to(#195ECA));
-  	background-image: -webkit-linear-gradient(top, #3993FF, #195ECA);
-  	background-image:    -moz-linear-gradient(top, #3993FF, #195ECA);
-  	background-image:      -o-linear-gradient(top, #3993FF, #195ECA);
-  	background-image:         linear-gradient(to bottom, #3993FF, #195ECA);
+form .save {
+	background-color: #3993FF;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#3993FF),
+		to(#195ECA));
+	background-image: -webkit-linear-gradient(top, #3993FF, #195ECA);
+	background-image: -moz-linear-gradient(top, #3993FF, #195ECA);
+	background-image: -o-linear-gradient(top, #3993FF, #195ECA);
+	background-image: linear-gradient(to bottom, #3993FF, #195ECA);
 	color: #ffffff;
 	border: #256AB3 solid 1px !important;
 	height: 40px;
 	width: 100%;
 	margin: .5em 0 1em 0 !important;
 	display: inline;
-	vertical-align: baseline;	
-	border-radius: .2em; 
+	vertical-align: baseline;
+	border-radius: .2em;
 	font-size: 16px;
 }
 
-
-
-
-
-.clear{
+.clear {
 	clear: both;
 }
-
 </style>
 
 <body>
-	<input type="hidden" name="userSession" value="${sessionScope.user}" />
-	<!-- ******************************************* Proveedor ******************************************* -->
-	<div class="g-unit" id="customer-tab">
+
+	<div class="contenedor">
+		<h1>
+			<img src="img/logosmall.png" alt="Agronome | Agranomie Marketplace">
+		</h1>
 		<div class="message" id="proveedor-show-message" style="display: none">
 		</div>
-		<div class="create-ctr" id="proveedor-create-ctr">
-			<h2>Actualización de Datos Proveedor</h2>
-			<form name="proveedor-create-form" id="proveedor-create-form">
-				<table width="200" cellspacing="0" cellpadding="0">
-					<tbody>
-						<tr>
-							<td>Nit(*)</td>
-							<td><span class="readonly"><input type="text"
-									style="width: 185px;" autocomplete="off" class="gsc-input"
-									maxlength="2048" name="nit" id="nit" /></span></td>
-						</tr>
+		<div class="update-ctr" id="proveedor-update-ctr">
 
-						<tr>
-							<td>Nombre(*)</td>
-							<td><input type="text" style="width: 185px;"
-								autocomplete="off" class="gsc-input" maxlength="2048"
-								name="nombre" id="nombre" /></td>
-						</tr>
-						<tr>
-							<td>Telefono(*)</td>
-							<td><input type="text" style="width: 185px;"
-								autocomplete="off" class="gsc-input" maxlength="2048"
-								name="telefono" id="telefono" /></td>
-						</tr>
-						<tr>
-							<td>Etiquetas(*)</td>
-							<td><input type="text" style="width: 185px;"
-								autocomplete="off" class="gsc-input" maxlength="2048"
-								name="etiquetas" id="etiquetas" /></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td><input type="button" class="save" title="Save"
-								value="Save" onclick="formValidate('proveedor')" /> </td>
-						</tr>
-					</tbody>
-				</table>
+			<form name="proveedor-update-form" id="proveedor-update-form">
+				<input type="hidden" id="usuario" name="usuario" />
+				<h2>Actualización de Datos</h2>
+				<input type="text" style="width: 185px;" autocomplete="off"
+					class="gsc-input" maxlength="2048" name="nit" id="nit"
+					placeholder="NIT" /> <input type="text" style="width: 185px;"
+					autocomplete="off" maxlength="2048" name="nombre" id="nombre"
+					placeholder="Nombre*" /> <input type="text" style="width: 185px;"
+					autocomplete="off" maxlength="2048" name="telefono" id="telefono"
+					placeholder="Teléfono*" /> <input type="text"
+					style="width: 185px;" autocomplete="off" maxlength="2048"
+					name="etiquetas" id="etiquetas" placeholder="Etiquetas*" />
+
+
+				<fieldset class="gllpLatlonPicker">
+					<input type="text" class="gllpSearchField"> <input
+						type="button" class="gllpSearchButton" value="Buscar"> <br />
+					<br />
+					<div class="gllpMap" style="width: 500px; height: 250px">Google
+						Maps</div>
+					<br /> <input id="latitud" type="hidden" name="latitud"
+						class="gllpLatitude" value="20" required="" /> <input
+						type="hidden" name="longitud" id="longitud" class="gllpLongitude"
+						value="20" required="" /> zoom: <input type="text"
+						class="gllpZoom" value="3" /> <input type="button"
+						class="gllpUpdateButton" value="Actualizar Mapa"> <br />
+				</fieldset>
+
+				<input type="button" class="save" title="Save" value="Actualizar"
+					onclick="actualizarProveedor()" /> <a href="index.html">Volver</a>
 			</form>
 		</div>
-
 	</div>
 </body>
 </html>
