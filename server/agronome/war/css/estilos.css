@@ -1,0 +1,67 @@
+
+body{
+	margin-top: -21px !important;
+}
+
+
+header{
+  background-color: #303030;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#303030), to(#222222));
+  background-image: -webkit-linear-gradient(top, #303030, #222222);
+  background-image:    -moz-linear-gradient(top, #303030, #222222);
+  background-image:      -o-linear-gradient(top, #303030, #222222);
+  background-image:         linear-gradient(to bottom, #303030, #222222);
+  height: 56px;
+  line-height: 56px;
+  margin: 0;
+}
+
+header .search{
+	display: inline-block;
+	margin: 0 0 0 1em !important;
+	border-radius: .2em;
+}
+
+header .search input{
+	padding: .4em;	
+	border-radius: .2em;
+}
+
+header .texto-web{
+	width: 65%;
+}
+
+header .boton-search {
+	background-color: #A3C741;
+	color: #ffffff;
+	border: 0;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+	height: 36px;
+	width: 25%;
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+
+h1 img{
+	margin: 5px 0 0 0;
+	float: left;
+	display: inline-block;
+}
+
+
+.contenedor{
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+
+
+#map-canvas {
+  height: 100%;
+  position: absolute; 
+  top: 52px; 
+  left: 0; 
+  right: 0; 
+  z-index: 0;
+}

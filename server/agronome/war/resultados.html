@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+	<meta charset="utf-8">
+        <link rel="stylesheet" href="css/estilos.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <title>Agrono.me | Toda la ganaderia a tu disposición</title>
+        <script>
+
+
+function initialize() {
+  
+	if(navigator.geolocation){
+		navigator.geolocation.getCurrentPosition(function(position){
+			var centro = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			var mapOptions = {
+    			zoom: 8,
+    			center: centro,
+    			mapTypeId: google.maps.MapTypeId.ROADMAP
+  			};
+  			var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);			
+		});
+	}
+
+
+  
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+</head>
+
+<body>
+<header>
+	<div class="contenedor">
+		<a href="resultados.html"><h1><img src="img/agronome_head.png" alt="Agronome Logo"></h1></a>
+
+	<div class="search">
+       <form id="searchform" action="search.html">
+             <input type="text" class="texto-web" placeholder="Encuentra produtos e insumos ganaderos">
+		     <input type="submit" class="boton-search" value="Buscar">
+        </form>                
+        </div>
+
+	</div>
+	<div id="map-canvas"></div>
+</header>
+
+
+
+</body>
