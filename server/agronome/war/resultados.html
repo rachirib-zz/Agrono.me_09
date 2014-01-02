@@ -5,32 +5,42 @@
         <link rel="stylesheet" href="css/estilos.css">
         <link rel="stylesheet" href="css/normalize.css">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
         <title>Agrono.me | Toda la ganaderia a tu disposición</title>
-        <script>
 
 
+<script>
+
+
+
+
+var map;
 function initialize() {
-  
-	if(navigator.geolocation){
-		navigator.geolocation.getCurrentPosition(function(position){
-			var centro = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			var mapOptions = {
-    			zoom: 8,
-    			center: centro,
-    			mapTypeId: google.maps.MapTypeId.ROADMAP
-  			};
-  			var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);			
-		});
-	}
+  var mapOptions = {
+    zoom: 18,
+    center: new google.maps.LatLng(4.598056,-74.075833),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
 
-
-  
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions) ;
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+function localizar ()
+{
+  navigation.geolocation.getCurrentPosition(mapa,error);
+}
+
+var mkr = new google.maps.Marker({
+
+
+})
+
     </script>
+
+
 </head>
 
 <body>
